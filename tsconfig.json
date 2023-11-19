@@ -27,7 +27,10 @@
     // import React from 'react';
     "allowSyntheticDefaultImports": true,
     //Для абсолютного импорта
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    }
   },
   // https://webpack.js.org/configuration/configuration-languages/#typescript - #TypeScript
   "ts-node": {
