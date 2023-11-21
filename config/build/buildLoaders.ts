@@ -1,28 +1,28 @@
-import webpack from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {BuildOptions} from "./types/config";
+import type webpack from 'webpack'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { type BuildOptions } from './types/config'
 
-export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders ({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     // порядок лоудеров выполнения в webpack имеет значения
 
     const svgLoader = {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ['@svgr/webpack']
     }
 
     const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
-    };
+        exclude: /node_modules/
+    }
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,
         use: [
             {
-                loader: 'file-loader',
-            },
-        ],
+                loader: 'file-loader'
+            }
+        ]
     }
 
     const cssLoader = {
@@ -41,28 +41,28 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
                 }
             },
             // Compiles Sass to CSS
-            "sass-loader",
+            'sass-loader'
         ]
     }
 
     const babelLoader = {
-      test: /\.(js|jsx|tsx)$/,
-      exclude: /node_modules/,
-      use: {
-        loader: "babel-loader",
-        options: {
-          presets: ['@babel/preset-env'],
-          "plugins": [
-            [
-              "i18next-extract",
-              {
-                locales: ['ua', 'en'],
-                "keyAsDefaultValue": true
-              }
-            ]
-          ]
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    [
+                        'i18next-extract',
+                        {
+                            locales: ['ua', 'en'],
+                            keyAsDefaultValue: true
+                        }
+                    ]
+                ]
+            }
         }
-      }
     }
 
     return [
