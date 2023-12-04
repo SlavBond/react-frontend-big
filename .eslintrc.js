@@ -35,7 +35,8 @@ module.exports = {
         "@typescript-eslint/prefer-nullish-coalescing": "off",
         "@typescript-eslint/explicit-function-return-type": 0,
         "@typescript-eslint/no-misused-promises": 0,
-        "@typescript-eslint/naming-convention": 0
+        "@typescript-eslint/naming-convention": 0,
+        "@typescript-eslint/semi": 0
     },
     globals: {
         '__IS_DEV__': true,
